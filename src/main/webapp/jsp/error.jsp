@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,8 +34,8 @@
     <!-- Message Error Start -->
 
     <div class="container my-3">
-      <div class="alert alert-danger">Algo ha salido mal</div>
-      <a href="#" class="btn btn-primary">
+      <div class="alert alert-danger">${mensaje}</div>
+      <a href="LoginController" class="btn btn-primary">
         <i class="fa fa-angle-left"></i> Ir al inicio</a
       >
     </div>

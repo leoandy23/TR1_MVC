@@ -8,6 +8,6 @@
 <meta http-equiv="refresh" content="0;url=LoginController" />
 </head>
 <body>
-<h1>Tarea MVC</h1>
+
 </body>
 </html>

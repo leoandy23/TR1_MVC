@@ -32,7 +32,7 @@
 
     <!-- Form Start -->
     <div class="container my-3">
-      <form action="" class="w-50 mx-auto shadow p-3 rounded">
+      <form action="CrearTareaController" method="POST" class="w-50 mx-auto shadow p-3 rounded">
         <h2>Crear tarea</h2>
         <div class="input-group mb-3">
           <label class="input-group-text" for="taskname">Nombre Tarea:</label>
@@ -42,19 +42,6 @@
             type="text"
             class="form-control"
             placeholder="Ingrese el nombre de la tarea" />
-        </div>
-        <div class="input-group mb-3">
-          <label class="input-group-text" for="taskname"
-            >Responsable de la tarea:</label
-          >
-          <select
-            class="form-select"
-            aria-label="Default select example"
-            name="responsable-task">
-            <option value="1" selected>Por asignar</option>
-            <option value="2">Luis Perez</option>
-            <option value="3">Pedro Montalvo</option>
-          </select>
         </div>
         <button type="submit" class="btn btn-primary">Crear Tarea</button>
       </form>

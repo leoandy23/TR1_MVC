@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
+<title>TR_01_MVC</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
 </head>
@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="w-50 mx-auto my-5 rounded shadow bg-light-subtle p-3">
 			<h3 class="text-center">Iniciar sesion</h3>
-			<form action="">
+			<form action="../LoginController" method="POST">
 				<div class="input-group mb-3">
 					<label class="input-group-text" id="basic-addon1" for="username">Usuario</label>
 					<input id="username" name="username" type="text"

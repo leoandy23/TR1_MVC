@@ -7,7 +7,7 @@ import java.util.List;
 public class Tarea implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private static int contador = 0;
+	private static int contador = 3;
 	private int codigo;
 	private String nombre;
 	private String estado;
@@ -16,14 +16,14 @@ public class Tarea implements Serializable {
 	private static List<Tarea> tareas = null;
 
 	public Tarea() {
-
 	}
 
-	public Tarea(String nombre) {
+	public Tarea(int codigo, String nombre, String estado, Responsable responsable) {
 		super();
-		this.codigo = ++contador;
+		this.codigo = codigo;
 		this.nombre = nombre;
-		this.estado = "Por Asignar";
+		this.estado = estado;
+		this.responsable = responsable;
 	}
 
 	public int getCodigo() {
@@ -63,6 +63,12 @@ public class Tarea implements Serializable {
 	public List<Tarea> getTareas() {
 		if (tareas == null) {
 			tareas = new ArrayList<>();
+			Responsable modeloResponsable = new Responsable();
+			List<Responsable> listaResponsables = modeloResponsable.getResponsables();
+			
+			tareas.add(new Tarea(1, "Realizar planillas", "Por Hacer", listaResponsables.get(0)));
+			tareas.add(new Tarea(2, "Revision de becas", "Por Hacer", listaResponsables.get(1)));
+			tareas.add(new Tarea(3, "Historiales medicos", "Por Hacer", listaResponsables.get(2)));
 		}
 		return tareas;
 	}
@@ -81,15 +87,15 @@ public class Tarea implements Serializable {
 	}
 
 	public void create(Tarea t) {
+		t.setCodigo(++contador);
 		this.getTareas().add(t);
 	}
 
-
-	public void asignar(int codigo, Responsable responsable) {
+	public void asignar(Tarea t, Responsable responsable) {
 		List<Tarea> listaTareas = this.getTareas();
 
 		for (Tarea tarea : listaTareas) {
-			if (tarea.getCodigo() == codigo) {
+			if (tarea.getCodigo() == t.getCodigo()) {
 				tarea.setResponsable(responsable);
 				tarea.setEstado("Por Hacer");
 				break;
@@ -109,39 +115,27 @@ public class Tarea implements Serializable {
 		return listaTareasPorResponsable;
 	}
 
-	public void completarTarea() {
+	public void completarTarea(Tarea t) {
 		List<Tarea> listaTareas = this.getTareas();
 
 		for (Tarea tarea : listaTareas) {
-			if (tarea.getCodigo() == codigo) {
+			if (tarea.getCodigo() == t.getCodigo()) {
 				tarea.setEstado("Completado");
 				break;
 			}
 		}
 	}
 	
-	public List<Tarea> getPorNombre (String nombre){
+	public List<Tarea> getPorResponsable(Responsable responsable){
 		List<Tarea> listaTareas = this.getTareas();
 		List<Tarea> listaTareasPorNombre = new ArrayList<>();
 
 		for (Tarea tarea : listaTareas) {
-			if (tarea.getNombre() == nombre) {
+			if (tarea.getResponsable() == responsable) {
 				listaTareasPorNombre.add(tarea);
 			}
 		}
 		return listaTareasPorNombre;
 	}
 	
-	public List<Tarea> getPorNombreYResponsable (int id, String nombre){
-		List<Tarea> listaTareas = this.getTareas();
-		List<Tarea> listaTareasPorNombre = new ArrayList<>();
-
-		for (Tarea tarea : listaTareas) {
-			if (tarea.getResponsable() != null && tarea.getResponsable().getId() == id && tarea.getNombre() == nombre ) {
-				listaTareasPorNombre.add(tarea);
-			}
-		}
-		return listaTareasPorNombre;
-	}
-
 }

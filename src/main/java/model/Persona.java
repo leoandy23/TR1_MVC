@@ -69,7 +69,6 @@ public class Persona implements Serializable{
 			personas = new ArrayList<>();
 			Responsable responsable = new Responsable();
 			Director director = new Director();
-	
 			personas.add(director.getDirector());
 			personas.addAll(responsable.getResponsables());
 		}
@@ -88,5 +87,4 @@ public class Persona implements Serializable{
 		}
 		return p;
 	}
-	
 }
