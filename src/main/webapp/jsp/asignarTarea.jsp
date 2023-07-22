@@ -53,6 +53,7 @@
 			</div>
 			<button type="submit" class="btn btn-primary">Guardar
 				Asignación</button>
+			<a href="MenuDirectorController" class="btn btn-secondary">Volver al Menú</a>
 		</form>
 	</div>
 	<!-- Form End -->

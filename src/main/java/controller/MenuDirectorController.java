@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.Director;
 import model.Tarea;
 
 @WebServlet("/MenuDirectorController")
@@ -21,10 +23,14 @@ public class MenuDirectorController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Director director = (Director) session.getAttribute("usuarioLogeado");
+		
 		Tarea modeloTarea = new Tarea();
 		List<Tarea> listaTareas = modeloTarea.getTareas();
 		
 		request.setAttribute("tareas", listaTareas);
+		request.setAttribute("nombreDirector", director.getNombre());
 		request.getRequestDispatcher("jsp/menuDirector.jsp").forward(request, response);
 	}
 

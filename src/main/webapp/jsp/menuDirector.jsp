@@ -22,7 +22,8 @@
 	<!-- Navbar Start -->
 	<nav class="navbar bg-body-tertiary">
 		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1">Director</span>
+			<span class="navbar-brand mb-0 h1">Administrador: <c:out value="${nombreDirector}"/></span>
+			<a href="CerrarSesionController" class="btn btn-danger">Cerrar Sesión</a>
 		</div>
 	</nav>
 	<!-- Navbar End -->

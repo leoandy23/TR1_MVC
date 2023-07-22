@@ -30,6 +30,7 @@ public class MenuResponsableController extends HttpServlet {
 		List<Tarea> listaTareas = modeloTarea.getPorResponsable(responsable);
 		
 		request.setAttribute("tareas", listaTareas);
+		request.setAttribute("nombreResponsable", responsable.getNombre());
 		request.getRequestDispatcher("jsp/menuResponsable.jsp").forward(request, response);
 		
 	}
