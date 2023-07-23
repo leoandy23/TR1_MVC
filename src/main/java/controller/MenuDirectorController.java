@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Director;
-import model.Responsable;
 import model.Tarea;
 
 @WebServlet("/MenuDirectorController")
@@ -25,12 +24,8 @@ public class MenuDirectorController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		Responsable responsable = (Responsable) session.getAttribute("responsableLogeado");
 		Director director = (Director) session.getAttribute("directorLogeado");
 		if (director == null) {
-			response.sendRedirect("LoginController");
-			return;
-		}else if (responsable != null) {
 			response.sendRedirect("LoginController");
 			return;
 		}
@@ -39,7 +34,7 @@ public class MenuDirectorController extends HttpServlet {
 		List<Tarea> listaTareas = modeloTarea.getTareas();
 		
 		request.setAttribute("tareas", listaTareas);
-		request.setAttribute("nombreDirector", director.getNombre());
+		request.setAttribute("director", director);
 		request.getRequestDispatcher("jsp/menuDirector.jsp").forward(request, response);
 	}
 

@@ -22,7 +22,7 @@
 	<!-- Navbar Start -->
 	<nav class="navbar bg-body-tertiary">
 		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1">Responsable: <c:out value="${nombreResponsable}"/></span>
+			<span class="navbar-brand mb-0 h1">Responsable de ${responsable.area}: <c:out value="${responsable.nombre}"/></span>
 			<a href="CerrarSesionController" class="btn btn-danger">Cerrar Sesión</a>
 		</div>
 	</nav>

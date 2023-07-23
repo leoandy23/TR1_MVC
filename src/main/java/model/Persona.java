@@ -74,17 +74,4 @@ public class Persona implements Serializable{
 		}
 		return personas;
 	}
-
-	public Persona getById(int id) {
-		Persona p = null;
-		List<Persona> listPersonas = this.getPersonas();
-
-		for (Persona persona : listPersonas) {
-			if (persona.getId() == id) {
-				p = persona;
-				break;
-			}
-		}
-		return p;
-	}
 }

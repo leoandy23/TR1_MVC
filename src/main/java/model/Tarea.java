@@ -67,7 +67,7 @@ public class Tarea implements Serializable {
 			List<Responsable> listaResponsables = modeloResponsable.getResponsables();
 			
 			tareas.add(new Tarea(1, "Realizar planillas", "Por Hacer", listaResponsables.get(0)));
-			tareas.add(new Tarea(2, "Revision de becas", "Por Hacer", listaResponsables.get(1)));
+			tareas.add(new Tarea(2, "Revisión de becas", "Por Hacer", listaResponsables.get(1)));
 			tareas.add(new Tarea(3, "Historiales medicos", "Por Hacer", listaResponsables.get(2)));
 		}
 		return tareas;
@@ -103,17 +103,6 @@ public class Tarea implements Serializable {
 		}
 	}
 
-	public List<Tarea> getPorResponsable(int id) {
-		List<Tarea> listaTareas = this.getTareas();
-		List<Tarea> listaTareasPorResponsable = new ArrayList<>();
-
-		for (Tarea tarea : listaTareas) {
-			if (tarea.getResponsable() != null && tarea.getResponsable().getId() == id) {
-				listaTareasPorResponsable.add(tarea);
-			}
-		}
-		return listaTareasPorResponsable;
-	}
 
 	public void completarTarea(Tarea t) {
 		List<Tarea> listaTareas = this.getTareas();

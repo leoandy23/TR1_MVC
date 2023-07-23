@@ -14,7 +14,7 @@ public class Director extends Persona {
 
 	}
 	
-	public Director getDirector () {
+	public Director getDirector() {
 		if(director == null) {
 			director = new Director (1, "Luis", "luis123");
 		}

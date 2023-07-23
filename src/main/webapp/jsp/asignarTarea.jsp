@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,7 @@
 	<!-- Navbar Start -->
 	<nav class="navbar bg-body-tertiary">
 		<div class="container-fluid">
-			<span class="navbar-brand mb-0 h1">Administrador</span>
+			<span class="navbar-brand mb-0 h1">Director: <c:out value="${director.nombre}"/></span>
 		</div>
 	</nav>
 	<!-- Navbar End -->
@@ -46,9 +47,9 @@
 				<label class="input-group-text" for="responsable-task">Responsable
 					de la tarea:</label> <select class="form-select"
 					aria-label="Default select example" name="responsable-task">
-					<option value="2" selected>Pépe</option>
-					<option value="3">María</option>
-					<option value="4">Mariana</option>
+					<c:forEach items="${responsables}" var="responsable">
+						<option value="${responsable.id}" selected>${responsable.nombre}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<button type="submit" class="btn btn-primary">Guardar

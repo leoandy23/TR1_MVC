@@ -14,7 +14,7 @@
 	<div class="container">
 		<div class="w-50 mx-auto my-5 rounded shadow bg-light-subtle p-3">
 			<h3 class="text-center">Iniciar sesion</h3>
-			<form action="../LoginController" method="POST">
+			<form action="LoginController" method="POST">
 				<div class="input-group mb-3">
 					<label class="input-group-text" id="basic-addon1" for="username">Usuario</label>
 					<input id="username" name="username" type="text"

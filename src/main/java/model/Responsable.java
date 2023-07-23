@@ -32,8 +32,8 @@ public class Responsable extends Persona {
 		if (responsables == null) {
 			responsables = new ArrayList<>();
 
-			responsables.add(new Responsable(2, "PÃ©pe", "pepe123", "Pago de Salarios"));
-			responsables.add(new Responsable(3, "MarÃ­a", "maria123", "Becas y estÃ­mulos"));
+			responsables.add(new Responsable(2, "Pépe", "pepe123", "Pago de Salarios"));
+			responsables.add(new Responsable(3, "María", "maria123", "Becas y estímulos"));
 			responsables.add(new Responsable(4, "Mariana", "mariana123", "Salud Laboral"));
 		}
 		return responsables;

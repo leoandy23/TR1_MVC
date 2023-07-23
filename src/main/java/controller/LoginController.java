@@ -21,7 +21,7 @@ public class LoginController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.sendRedirect("jsp/login.jsp");
+		request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,18 +34,14 @@ public class LoginController extends HttpServlet {
 		if (personaAutenticada != null) {
 			// Crear la sesion
 			HttpSession session = request.getSession();
-			session.setAttribute("usuarioLogeado", personaAutenticada);
 			
 			if (personaAutenticada instanceof Director) {
-				
-                session.setAttribute("directorLogeado", personaAutenticada);
+                session.setAttribute("directorLogeado", (Director) personaAutenticada);
                 response.sendRedirect("MenuDirectorController");
-
 			}
 			
 			if (personaAutenticada instanceof Responsable) {
-				
-                session.setAttribute("responsableLogeado", personaAutenticada);
+                session.setAttribute("responsableLogeado", (Responsable) personaAutenticada);
                 response.sendRedirect("MenuResponsableController");
 			}
 			return;
