@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Director;
+import model.Responsable;
 import model.Tarea;
 
 @WebServlet("/CrearTareaController")
@@ -20,7 +21,18 @@ public class CrearTareaController extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		HttpSession session = request.getSession();
+		Responsable responsable = (Responsable) session.getAttribute("responsableLogeado");
+		Director director = (Director) session.getAttribute("directorLogeado");
+		if (director == null) {
+			response.sendRedirect("LoginController");
+			return;
+		}else if (responsable != null) {
+			response.sendRedirect("LoginController");
+			return;
+		}
+		
+		
 		request.getRequestDispatcher("jsp/crearTarea.jsp").forward(request, response);
 	}
 
@@ -28,12 +40,9 @@ public class CrearTareaController extends HttpServlet {
 		
 		// 1.- Obtener datos que me env�an en la solicitud
 		HttpSession session = request.getSession();
-		Director director = (Director) session.getAttribute("usuarioLogeado");
+		Director director = (Director) session.getAttribute("directorLogeado");
 		
-		if (director == null) {
-			response.sendRedirect("LoginController");
-			return;
-		}
+		
 		request.setAttribute("nombreDirector", director.getNombre());
 		String nombreTarea = request.getParameter("taskname");
 

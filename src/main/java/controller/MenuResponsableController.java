@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Tarea;
+import model.Director;
 import model.Responsable;
 
 @WebServlet("/MenuResponsableController")
@@ -24,11 +25,16 @@ public class MenuResponsableController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		Responsable responsable = (Responsable) session.getAttribute("usuarioLogeado");
+		Responsable responsable = (Responsable) session.getAttribute("responsableLogeado");
+		Director director = (Director) session.getAttribute("directorLogeado");
 		if (responsable == null) {
 			response.sendRedirect("LoginController");
 			return;
+		}else if (director != null) {
+			response.sendRedirect("LoginController");
+			return;
 		}
+		
 		
 		Tarea modeloTarea = new Tarea();
 		List<Tarea> listaTareas = modeloTarea.getPorResponsable(responsable);

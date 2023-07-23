@@ -37,11 +37,16 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("usuarioLogeado", personaAutenticada);
 			
 			if (personaAutenticada instanceof Director) {
-				response.sendRedirect("MenuDirectorController");
+				
+                session.setAttribute("directorLogeado", personaAutenticada);
+                response.sendRedirect("MenuDirectorController");
+
 			}
 			
 			if (personaAutenticada instanceof Responsable) {
-				response.sendRedirect("MenuResponsableController");
+				
+                session.setAttribute("responsableLogeado", personaAutenticada);
+                response.sendRedirect("MenuResponsableController");
 			}
 			return;
 		} else {

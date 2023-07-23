@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Director;
 import model.Responsable;
 import model.Tarea;
 
@@ -22,11 +23,16 @@ public class CompletarTareaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		Responsable responsable = (Responsable) session.getAttribute("usuarioLogeado");
-		if (responsable == null) {
+		Responsable responsable = (Responsable) session.getAttribute("responsableLogeado");
+		Director director = (Director) session.getAttribute("directorLogeado");
+		if (director == null) {
+			response.sendRedirect("LoginController");
+			return;
+		}else if (responsable != null) {
 			response.sendRedirect("LoginController");
 			return;
 		}
+		
 
 		Integer codigoTarea = Integer.parseInt(request.getParameter("codigoTarea"));
 
