@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import model.Director;
 import model.Persona;
 import model.Responsable;
 import model.Tarea;
@@ -21,6 +23,13 @@ public class AsignarTareaController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Director director = (Director) session.getAttribute("usuarioLogeado");
+		if (director == null) {
+			response.sendRedirect("LoginController");
+			return;
+		}
+		
 		Integer codigoTarea = Integer.parseInt(request.getParameter("codigoTarea"));
 		
 		Tarea modeloTarea = new Tarea();
@@ -32,7 +41,7 @@ public class AsignarTareaController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 1.- Obtener datos que me envían en la solicitud
+		// 1.- Obtener datos que me envï¿½an en la solicitud
 		Integer codigoTarea = Integer.parseInt(request.getParameter("id"));
 		Integer idResponsable = Integer.parseInt(request.getParameter("responsable-task"));
 		

@@ -25,6 +25,10 @@ public class MenuDirectorController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Director director = (Director) session.getAttribute("usuarioLogeado");
+		if (director == null) {
+			response.sendRedirect("LoginController");
+			return;
+		}
 		
 		Tarea modeloTarea = new Tarea();
 		List<Tarea> listaTareas = modeloTarea.getTareas();

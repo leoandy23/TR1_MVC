@@ -25,6 +25,10 @@ public class MenuResponsableController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Responsable responsable = (Responsable) session.getAttribute("usuarioLogeado");
+		if (responsable == null) {
+			response.sendRedirect("LoginController");
+			return;
+		}
 		
 		Tarea modeloTarea = new Tarea();
 		List<Tarea> listaTareas = modeloTarea.getPorResponsable(responsable);

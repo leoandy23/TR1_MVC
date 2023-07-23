@@ -29,6 +29,11 @@ public class CrearTareaController extends HttpServlet {
 		// 1.- Obtener datos que me env�an en la solicitud
 		HttpSession session = request.getSession();
 		Director director = (Director) session.getAttribute("usuarioLogeado");
+		
+		if (director == null) {
+			response.sendRedirect("LoginController");
+			return;
+		}
 		request.setAttribute("nombreDirector", director.getNombre());
 		String nombreTarea = request.getParameter("taskname");
 
